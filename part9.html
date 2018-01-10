@@ -144,7 +144,9 @@ function update() {
     {
         player.body.velocity.y = -350;
     }
-
+    if (cursor.down.isDown && player.body.up) {
+	    player.body.velocity.y= 100000;
+    }
 }
 
 function collectStar (player, star) {
