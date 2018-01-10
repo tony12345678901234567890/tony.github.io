@@ -54,14 +54,14 @@ function create() {
     ground.scale.setTo(2, 2);
 
     //  This stops it from falling away when you jump on it
-    ground.body.immovable = true;
+    ground.body.immovable = false;
 
     //  Now let's create two ledges
     var ledge = platforms.create(400, 400, 'ground');
     ledge.body.immovable = true;
 
     ledge = platforms.create(-150, 250, 'ground');
-    ledge.body.immovable = true;
+    ledge.body.immovable = false;
 
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 150, 'dude');
@@ -71,7 +71,7 @@ function create() {
 
     //  Player physics properties. Give the little guy a slight bounce.
     player.body.bounce.y = 0.6;
-    player.body.gravity.y = 200;
+    player.body.gravity.y = 100;
     player.body.collideWorldBounds = true;
 
     //  Our two animations, walking left and right.
@@ -85,7 +85,7 @@ function create() {
     stars.enableBody = true;
 
     //  Here we'll create 12 of them evenly spaced apart
-    for (var i = 0; i < 200; i++)
+    for (var i = 0; i < 15; i++)
     {
         //  Create a star inside of the 'stars' group
         var star = stars.create(i * 70, 0, 'star');
