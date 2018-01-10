@@ -144,8 +144,9 @@ function update() {
     {
         player.body.velocity.y = -350;
     }
-    if (cursor.down.isDown && player.body.up) {
-	    player.body.velocity.y= 100000;
+
+    else if (cursor.down.isDown && player.body.up) {
+	    player.body.velocity.y = 350;
     }
 }
 
