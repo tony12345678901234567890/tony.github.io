@@ -18,7 +18,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create
 
 function preload() {
 
-    game.load.image('sky', 'assets/hell.jpg');
+    game.load.image('sky', 'assets/hell2.png');
     game.load.image('ground', 'assets/platform.png');
     game.load.image('star', 'assets/star.png');
     game.load.spritesheet('dude', 'assets/animeDude.png', 32, 48);
@@ -62,7 +62,7 @@ function create() {
     ledge.body.immovable = true;
 
     // The player and its settings
-    player = game.add.sprite(32, game.world.height - 150, 'animeDude');
+    player = game.add.sprite(32, game.world.height - 150, 'dude');
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
@@ -131,7 +131,7 @@ function update() {
         //  Stand still
         player.animations.stop();
 
-        player.frame = 4;
+        player.frame = 10;
     }
     
     //  Allow the player to jump if they are touching the ground.
