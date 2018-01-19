@@ -103,6 +103,8 @@ function create() {
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
     
+    // add reset key on spacebar
+    spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 }
 
 function update() {
@@ -145,12 +147,11 @@ function update() {
         player.body.velocity.y = -350;
     }
 }
-}
-// reset the game on space bar
-    document.body.onkeyup = function(e){
-    if(e.keyCode == 32){
-        window.location.reload(true)
+    if (spacebar.isDown)
+    {
+	this.game.state.restart(); 
     }
+}
 
 function collectStar (player, star) {
     
