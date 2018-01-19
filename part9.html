@@ -156,10 +156,12 @@ function collectStar (player, star) {
     scoreText.text = 'Score: ' + score;
 
 }
-function endGame(var score = 120) {
-	//Resets game
+function endGame() {
+	if(score===120) {
+	//reset
 	window.location.reload();
 }	
+}
 </script>
 
 </body>
