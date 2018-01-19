@@ -145,6 +145,12 @@ function update() {
         player.body.velocity.y = -350;
     }
 }
+}
+// reset the game on space bar
+    document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+        window.location.reload(true)
+    }
 
 function collectStar (player, star) {
     
