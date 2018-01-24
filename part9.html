@@ -106,7 +106,6 @@ function create() {
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
-    this.key = game.input.keyboard.addKey(Phaser.Keyboard.A);
 }
 
 function update() {
@@ -149,9 +148,6 @@ function update() {
         player.body.velocity.y = -350;
     }
     if (cursors.down.isDown) {
-    	player.body.velocity.y = 350;
-    }
-    if (this.key.isDown) {
         fireBullet();
     }
 	
