@@ -39,9 +39,6 @@ function create() {
     bullets = game.add.group();
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
-    bullets.createMultiple(10, 'bullet');
-    bullets.callAll('events.onOutOfBounds.add', 'events.onOutOfBounds', resetBullet, this);
-    bullets.setAll('checkWorldBounds', true);
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -110,7 +107,6 @@ function create() {
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR ]);
 }
 
 function update() {
@@ -121,7 +117,7 @@ function update() {
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
-
+    game.physics.arcade.overlap(bullet, stars, collectStarTwo, null, this);
     //  Reset the players velocity (movement)
     player.body.velocity.x = 0;
 
@@ -174,11 +170,6 @@ function fireBullet() {
         }
     }
 }
-function resetBullet (bullet) {
-
-    bullet.kill();
-
-}
 function collectStar (player, star) {
     
     // Removes the star from the screen
@@ -188,6 +179,12 @@ function collectStar (player, star) {
     score += 10;
     scoreText.text = 'Score: ' + score;
 
+}
+function collectStarTwo (bullet, star) {
+   star.kill()
+   bullet.kill()
+   score += 10;
+   scoreText.text = 'Score: ' + score;
 }
 </script>
 
