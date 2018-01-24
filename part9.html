@@ -106,7 +106,7 @@ function create() {
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
-    this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    this.key = game.input.keyboard.addKey(Phaser.Keyboard.A);
 }
 
 function update() {
@@ -151,7 +151,7 @@ function update() {
     if (cursors.down.isDown) {
     	player.body.velocity.y = 350;
     }
-    if (this.spacekey.isDown) {
+    if (this.key.isDown) {
         fireBullet();
     }
 	
