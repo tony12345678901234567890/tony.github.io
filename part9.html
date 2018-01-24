@@ -22,19 +22,26 @@ function preload() {
     game.load.image('ground', 'assets/platform.png');
     game.load.image('star', 'assets/star.png');
     game.load.spritesheet('dude', 'assets/animeDude.png', 50, 65);
-
+    game.load.spritesheet('bullets', 'assets/bullets.png')
 }
 
 var player;
 var platforms;
 var cursors;
-
+var bullets;
+var bullet;
 var stars;
 var score = 0;
 var scoreText;
 
 function create() {
-
+// makes bullets
+    bullets = game.add.group();
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+    bullets.createMultiple(10, 'bullet');
+    bullets.callAll('events.onOutOfBounds.add', 'events.onOutOfBounds', resetBullet, this);
+    bullets.setAll('checkWorldBounds', true);
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -102,6 +109,8 @@ function create() {
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
+    this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR ]);
 }
 
 function update() {
@@ -146,9 +155,30 @@ function update() {
     if (cursors.down.isDown) {
     	player.body.velocity.y = 350;
     }
+    if (this.spacekey.isDown) {
+        fireBullet();
+    }
 	
 }
 
+function fireBullet() {
+    if (game.time.now > bulletTime)
+    {
+        bullet = bullets.getFirstExists(false);
+
+        if (bullet)
+        {
+            bullet.reset(sprite.x + 6, sprite.y - 8);
+            bullet.body.velocity.y = -300;
+            bulletTime = game.time.now + 250;
+        }
+    }
+}
+function resetBullet (bullet) {
+
+    bullet.kill();
+
+}
 function collectStar (player, star) {
     
     // Removes the star from the screen
