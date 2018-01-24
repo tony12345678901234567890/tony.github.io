@@ -37,8 +37,14 @@ var scoreText;
 function create() {
 // makes bullets
     bullets = game.add.group();
+
     bullets.enableBody = true;
+
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+    bullets.createMultiple(10, 'bullet');
+    bullets.callAll('events.onOutOfBounds.add', 'events.onOutOfBounds', resetBullet, this);
+    bullets.setAll('checkWorldBounds', true);
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -181,6 +187,11 @@ function collectStarTwo (bullet, star) {
    bullet.kill()
    score += 10;
    scoreText.text = 'Score: ' + score;
+}
+function resetBullet (bullet) {
+
+    bullet.kill();
+
 }
 </script>
 
