@@ -109,8 +109,8 @@ function update() {
     {
         player.body.velocity.y = -350;
     }
-    if (cursors.down.isDown && cursors.up.isDown) {
-        player.body.velocity.y - 350;
+    if (cursors.down.isDown && player.body.touching.up) {
+        player.body.velocity.y = -350;
     }
 }
 function collectStar (player, star) {
