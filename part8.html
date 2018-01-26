@@ -75,7 +75,7 @@ function create() {
     scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
-    spacebar = game.input.keyboard.addKeys(Phaser.Keyboard.SPACEBAR);
+    doubleJump = game.input.keyboard.addKeys(Phaser.Keyboard.SPACEBAR);
     
 }
 function update() {
@@ -112,9 +112,6 @@ function update() {
     }
     if (cursors.down.isDown) {
         player.body.velocity.y = 0;
-    }
-    if (spacebar.spacebar.isDown) {
-        player.body.velocity.y = -700;
     }
 }
 function collectStar (player, star) {
