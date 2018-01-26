@@ -38,7 +38,7 @@ var bulletTime = 0;
 function create() {
 // makes bullets
     bullets = game.add.group();
-
+    bullets.sprite = 2;
     bullets.enableBody = true;
 
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
