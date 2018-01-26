@@ -110,7 +110,10 @@ function update() {
     {
         player.body.velocity.y = -350;
     }
-    if (cursors.down.isDown && player.body.touching.up) {
+    if (cursors.down.isDown) {
+        player.body.velocity.y = 0;
+    }
+    if (spacebar.spacebar.isDown) {
         player.body.velocity.y = -700;
     }
 }
