@@ -118,10 +118,10 @@ function collectStar (player, star) {
     score += 10;
     scoreText.text = 'Score: ' + score;
 }
-(keyup.enter)="reset()";
 function reset() {
-location.reload();
+    location.reload();
 }
 </script>
+<input type="button" onkeydown="if(event.keyCode == 13)reset().click()" maxlength="20">
 </body>
 </html
