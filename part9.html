@@ -109,6 +109,9 @@ function update() {
     {
         player.body.velocity.y = -350;
     }
+    if (cursors.down.isDown) {
+    reset();
+    }
 }
 function collectStar (player, star) {
     
@@ -122,6 +125,6 @@ function reset() {
     location.reload();
 }
 </script>
-<input type="button" onkeydown="if(event.keyCode == 13)reset().click()" maxlength="20">
+	<button onclick="reset()">RESET Game</button>
 </body>
 </html
