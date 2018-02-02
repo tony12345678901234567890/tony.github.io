@@ -30,7 +30,7 @@ var scoreText;
 var button;
 function create() {
     // add button sprite
-    button = game.add.button(game.world.centerX - 30, 40, 'button', actionOnClick);
+    button = game.add.button(game.world.centerX - 30, 40, 'button', actionOnClick, this, 0);
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
     //  A simple background for our game
