@@ -29,13 +29,13 @@ var score = 0;
 var scoreText;
 var button;
 function create() {
-    // add button sprite
-    button = game.add.button(game.world.centerX - 100, 300, 'button', actionOnClick, this, 2, 1, 0);
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
     //  A simple background for our game
     game.add.sprite(0, 0, 'sky');
-    //  The platforms group contains the ground and the 2 ledges we can jump on
+    // create button
+    button = game.add.button(game.world.centerX - 100, 300, 'button', actionOnClick, this, 2, 1, 0);
+   // create platform
     platforms = game.add.group();
     //  We will enable physics for any object that is created in this group
     platforms.enableBody = true;
