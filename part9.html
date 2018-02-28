@@ -44,8 +44,6 @@ function create() {
     //  Now let's create two ledges
     var ledge = platforms.create(100, 100, 'ground');
     ledge.body.immovable = true;
-    ledge = platforms.create(-100, 150, 'ground');
-    ledge.body.immovable = true;
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 150, 'dude');
     //  We need to enable physics on the player
@@ -116,10 +114,8 @@ function update() {
 function collectStar (player, star) {
     
     // Removes the star from the screen
-    star.kill();
+    player.kill();
     //  Add and update the score
-    score += 20;
-    scoreText.text = 'Score: ' + score;
 }
 </script>
 </body>
