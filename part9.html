@@ -42,7 +42,7 @@ function create() {
     //  This stops it from falling away when you jump on it
     ground.body.immovable = true;
     //  Now let's create two ledges
-    var ledge = platforms.create(100, 100, 'ground');
+    var ledge = platforms.create(0, 100, 'ground');
     ledge.body.immovable = true;
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 150, 'dude');
@@ -115,7 +115,8 @@ function collectStar (player, star) {
     
     // Removes the star from the screen
     player.kill();
-    //  Add and update the score
+    //  reload game
+   location.reload();
 }
 </script>
 </body>
